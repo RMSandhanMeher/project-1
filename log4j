@@ -1,0 +1,55 @@
+log4j
+--------------------------------------------------------
+dependencies
+-------------------
+<dependency>
+    <groupId>log4j</groupId>
+    <artifactId>log4j</artifactId>
+    <version>1.2.17</version>
+</dependency>
+
+
+-------------------
+log4j.properties
+-------------------
+log4j.rootLogger=DEBUG, FILE, CONSOLE
+log4j.appender.FILE=org.apache.log4j.FileAppender
+log4j.appender.FILE.file=c:/logs/calculation_logger.log
+log4j.appender.FILE.layout=org.apache.log4j.PatternLayout
+log4j.appender.FILE.layout.ConversionPattern=[%d{YYYY MMM dd HH:mm:ss}] %-5p (%F:%L) - %m%n
+log4j.appender.CONSOLE=org.apache.log4j.ConsoleAppender
+log4j.appender.CONSOLE.layout=org.apache.log4j.PatternLayout
+log4j.appender.CONSOLE.layout.ConversionPattern=[%d{YYYY MMM dd HH:mm:ss}] %-5p (%F:%L) - %m%n
+
+--------------------
+import org.apache.log4j.Logger;
+
+private static final Logger logger = Logger.getLogger(MyClass.class);
+
+--------------------
+--------------------
+public class Example {
+    private static final Logger logger = Logger.getLogger(Example.class);
+
+    public static void main(String[] args) {
+        logger.debug("This is a debug message for developers.");
+        logger.info("Application started successfully.");
+        logger.warn("Cache server not available, using fallback.");
+        logger.error("Database connection failed.");
+        logger.fatal("Unable to load essential configuration. System crash!");
+    }
+}
+
+
+----------------------
+| Log Level | When to Use                     | Avoid Logging                             |
+| --------- | ------------------------------- | ----------------------------------------- |
+| `DEBUG`   | Variable values, flow tracing   | In production logs unless troubleshooting |
+| `INFO`    | Key lifecycle events            | Too much detail that clutters logs        |
+| `WARN`    | Recoverable issues              | Non-issues just to "test logging"         |
+| `ERROR`   | Caught exceptions, failed logic | Unimportant issues or handled logic       |
+| `FATAL`   | Crashes, unrecoverable failures | In non-fatal scenarios                    |
+
+
+-----------------------
+
