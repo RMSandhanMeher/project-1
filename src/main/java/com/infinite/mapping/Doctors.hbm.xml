@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.infinite.model">
+
+    <class name="Doctors" table="doctors">
+        <id name="doctor_id" column="doctor_id">
+            <generator class="assigned"/>
+        </id>
+
+        <!-- Many-to-One mapping to Providers -->
+        <many-to-one name="provider" class="com.infinite.model.Providers" column="provider_id" not-null="true"/>
+
+        <property name="doctor_name" column="doctor_name"/>
+        <property name="qualification" column="qualification"/>
+        <property name="specialization" column="specialization"/>
+        <property name="license_no" column="license_no"/>
+        <property name="email" column="email"/>
+        <property name="address" column="address"/>
+        <property name="gender" column="gender"/>
+        <property name="password" column="password"/>
+
+        <!-- Enum: LoginStatus -->
+        <property name="login_status">
+            <column name="login_status"/>
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">com.infinite.model.LoginStatus</param>
+                <param name="type">12</param>
+            </type>
+        </property>
+
+        <!-- Enum: DoctorStatus -->
+        <property name="doctor_status">
+            <column name="doctor_status"/>
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">com.infinite.model.DoctorStatus</param>
+                <param name="type">12</param>
+            </type>
+        </property>
+
+        <!-- ✅ One-to-Many mapping to DoctorAvailability -->
+        <set name="availabilityList" table="doctor_availability" inverse="true" cascade="all-delete-orphan">
+            <key column="doctor_id" />
+            <one-to-many class="com.infinite.model.DoctorAvailability" />
+        </set>
+
+    </class>
+
+</hibernate-mapping>

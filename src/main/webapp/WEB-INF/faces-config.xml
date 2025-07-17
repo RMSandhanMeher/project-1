@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+              http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
+	version="2.0" metadata-complete="false">
+
+	<!-- Existing beans -->
+	<managed-bean>
+		<managed-bean-name>providerController</managed-bean-name>
+		<managed-bean-class>com.infinite.controller.ProviderController</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>doctorController</managed-bean-name>
+		<managed-bean-class>com.infinite.controller.DoctorController</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>appointmentController</managed-bean-name>
+		<managed-bean-class>com.infinite.controller.AppointmentController</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>doctorProviderController</managed-bean-name>
+		<managed-bean-class>com.infinite.controller.DoctorProviderController</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope> <!-- use session in .jsp -->
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>appointmentPdfController</managed-bean-name>
+		<managed-bean-class>com.infinite.controller.AppointmentPdfController</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>doctorAvailabilityController</managed-bean-name>
+		<managed-bean-class>com.infinite.controller.DoctorAvailabilityController</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+</faces-config>

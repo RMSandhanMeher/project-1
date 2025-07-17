@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+
+		<!-- Database connection settings -->
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/healthsure</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">826068282282</property>
+
+		<!-- SQL dialect -->
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+		<!-- Connection pool size -->
+		<property name="hibernate.connection.pool_size">10</property>
+
+
+		<!-- Format SQL -->
+		<property name="hibernate.format_sql">true</property>
+
+		<!-- Automatically update the database schema -->
+		<property name="hibernate.hbm2ddl.auto">update</property>
+
+		<!-- XML Mapping files -->
+		<mapping resource="com/infinite/mapping/Recipient.hbm.xml" />
+		<mapping resource="com/infinite/mapping/Providers.hbm.xml" />
+		<mapping resource="com/infinite/mapping/Doctors.hbm.xml" />
+		<mapping
+			resource="com/infinite/mapping/DoctorAvailability.hbm.xml" />
+		<mapping resource="com/infinite/mapping/Appointment.hbm.xml" />
+
+	</session-factory>
+</hibernate-configuration>

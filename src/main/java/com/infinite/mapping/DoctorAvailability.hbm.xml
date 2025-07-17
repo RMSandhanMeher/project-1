@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.infinite.model">
+
+    <class name="DoctorAvailability" table="doctor_availability">
+
+        <!-- Primary Key -->
+        <id name="availability_id" column="availability_id">
+            <generator class="assigned" />
+        </id>
+
+        <!-- Many-to-One: Each availability belongs to one doctor -->
+        <many-to-one name="doctor"
+                     class="com.infinite.model.Doctors"
+                     column="doctor_id"
+                     not-null="true" />
+
+        <!-- Date and Time -->
+        <property name="available_date" column="available_date" />
+        <property name="start_time" column="start_time" />
+        <property name="end_time" column="end_time" />
+
+        <!-- SlotType Enum: Stored as VARCHAR -->
+        <property name="slot_type">
+            <column name="slot_type" />
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">com.infinite.model.SlotType</param>
+                <param name="type">12</param> <!-- 12 = VARCHAR -->
+            </type>
+        </property>
+
+        <!-- Capacity and Recurrence -->
+        <property name="max_capacity" column="max_capacity" />
+        <property name="is_recurring" column="is_recurring" />
+        <property name="notes" column="notes" />
+
+        <!-- Read-only patient_window (auto-calculated by DB) -->
+        <property name="patient_window" column="patient_window" insert="false" update="false" />
+
+        <!-- Timestamp -->
+        <property name="created_at" column="created_at" />
+
+    </class>
+
+</hibernate-mapping>

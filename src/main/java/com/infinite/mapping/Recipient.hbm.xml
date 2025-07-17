@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.infinite.model">
+
+    <class name="Recipient" table="recipient">
+
+        <id name="h_id" column="h_id">
+            <generator class="assigned"/>
+        </id>
+
+        <property name="first_name" column="first_name"/>
+        <property name="last_name" column="last_name"/>
+        <property name="mobile" column="mobile"/>
+        <property name="user_name" column="user_name"/>
+
+        <!-- Enum for Gender -->
+        <property name="gender">
+            <column name="gender"/>
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">com.infinite.model.Gender</param>
+                <param name="type">12</param> <!-- Store as String -->
+            </type>
+        </property>
+
+        <property name="dob" column="dob"/>
+        <property name="address" column="address"/>
+        <property name="created_at" column="created_at"/>
+        <property name="password" column="password"/>
+        <property name="email" column="email"/>
+
+        <!-- Enum for Status -->
+        <property name="status">
+            <column name="status"/>
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">com.infinite.model.RecipientStatus</param>
+                <param name="type">12</param> <!-- Store as String -->
+            </type>
+        </property>
+
+        <property name="login_attempts" column="login_attempts"/>
+        <property name="locked_until" column="locked_until"/>
+        <property name="last_login" column="last_login"/>
+        <property name="password_updated_at" column="password_updated_at"/>
+
+        <!-- One-to-Many relationship with Appointment -->
+        <set name="appointments" cascade="all" inverse="true">
+            <key column="h_id"/>
+            <one-to-many class="com.infinite.model.Appointment"/>
+        </set>
+
+    </class>
+
+</hibernate-mapping>

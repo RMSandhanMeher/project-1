@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.infinite.model">
+
+	<class name="Appointment" table="appointment">
+
+		<!-- Primary Key -->
+		<id name="appointment_id" column="appointment_id">
+			<generator class="assigned" />
+		</id>
+
+		<!-- Many-to-One with Doctors -->
+		<many-to-one name="doctor"
+			class="com.infinite.model.Doctors" column="doctor_id" not-null="true" />
+
+		<!-- Many-to-One with Recipient -->
+		<many-to-one name="recipient"
+			class="com.infinite.model.Recipient" column="h_id" not-null="true" />
+
+		<!-- Many-to-One with DoctorAvailability -->
+		<many-to-one name="availability"
+			class="com.infinite.model.DoctorAvailability"
+			column="availability_id" not-null="true" />
+
+		<!-- Many-to-One with Providers -->
+		<many-to-one name="provider"
+			class="com.infinite.model.Providers" column="provider_id"
+			not-null="true" />
+
+		<!-- Timestamps and basic fields -->
+		<property name="requested_at" column="requested_at" />
+		<property name="booked_at" column="booked_at" />
+		<property name="cancelled_at" column="cancelled_at" />
+		<property name="completed_at" column="completed_at" />
+		<property name="start" column="start" />
+		<property name="end" column="end" />
+		<property name="notes" column="notes" />
+
+		<!-- slot_no -->
+		<property name="slot_no" column="slot_no" not-null="true" />
+
+		<!-- AppointmentStatus enum -->
+		<property name="status">
+			<column name="status" />
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">com.infinite.model.AppointmentStatus</param>
+				<param name="type">12</param> <!-- 12 = VARCHAR -->
+			</type>
+		</property>
+
+	</class>
+
+</hibernate-mapping>
