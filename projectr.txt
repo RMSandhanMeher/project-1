@@ -1,0 +1,17 @@
+project 
+1. issue : if there is any past pending appointment it not allowing to book appointment
+2. issue : if triger the past appointment dropdown it not allowing to se the upcoming appointment here now 
+3. feat : also send mail if the patient cancel the appointment 
+4. feat : the appointment confirmation page also some more details like the doctor name specialization slot   dateandtime 
+5. feat : the bookappointment page should have loading page so the user should know that its loading here now 
+6. feat : the update appointment page should be there 
+7. feat : the show appointment page should also filter the past and the upcoming pending and the approved complete cancel here now 
+8. feat : also have the pagination and date filter for the show appointment here now 
+9. the project have log4j implemented 
+10. the project have class method level comment present 
+11. need to use raw css not tailwind here 
+12. the project should be implemented with releted module 
+
+the future appointment - booked cancel and pending 
+the past appointment - pending booked cancel and the complete 
+the page should have pagination and sorting here 
